@@ -1,0 +1,5 @@
+/esm
+/lib
+/dist
+node_modules
+*.md

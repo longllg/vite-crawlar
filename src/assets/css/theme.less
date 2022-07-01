@@ -1,0 +1,77 @@
+@import 'antd/es/style/themes/variable.less';
+
+@font-family: DINPro Medium, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Segoe UI',
+  'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif,
+  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+@blue-6: #475ce6;
+@green-6: #00b354;
+@blue-7: #79cdf8;
+@gold-6: #ffb700;
+@body-background: #f7fafa;
+@border-color-base: #e1e6e6;
+@border-color-split: #e1e6e6;
+@text-color: #181a1a;
+@heading-color: #181a1a;
+@important-color: #ff401a;
+// @text-color-secondary: #889191;
+@disabled-color: #afb6b6;
+@menu-item-active-border-width: 0;
+@menu-inline-submenu-bg: @component-background;
+@menu-inline-toplevel-item-height: 36px;
+@menu-item-height: 36px;
+@menu-collapsed-width: 48px;
+
+// button
+@btn-default-border: #edf2f2;
+@btn-default-bg: #edf2f2;
+
+:root {
+  --primary-color: @blue-6;
+  --primary-color-5: fade(@blue-6, 5%);
+  --primary-color-10: fade(@blue-6, 10%);
+  --primary-color-20: fade(@blue-6, 20%);
+  --primary-color-50: fade(@blue-6, 50%);
+  --primary-color-hover: var(--ant-primary-color-hover);
+  --body-background: @body-background;
+  --body-background-second: #eceeee;
+  --component-background: @component-background;
+  --border-color-base: @border-color-base;
+  --border-color-split: @border-color-split;
+  --white: #ffffff;
+  --text-color: @text-color;
+  --text-color-secondary: @text-color-secondary;
+  --disabled-color: @disabled-color;
+  --success-color: @green-6;
+  --warning-color: @gold-6;
+  //作品占比
+  --works-color: @blue-7;
+  --text-color-second: #3d4242;
+  --text-color-third: #626a6a;
+  --text-color-fourth: #889191;
+  --text-color-fifth: @disabled-color;
+  --text-color-sixth: #787a7a;
+  --text-color-seventh: #3e4040;
+  --btn-default-bg: @btn-default-bg;
+  // 普通按钮的背景色
+  --normal-btn-background: @btn-default-bg;
+  // 普通按钮的hover颜色
+  --normal-btn-hover-color: #6174f2;
+  // 普通按钮的文字颜色
+  --normal-btn-color: var(--text-color-third);
+  // 重要操作的颜色
+  // 重要操作的颜色
+  --important-color: @important-color;
+  // 重要操作的颜色hover值
+  --important-color-hover: fade(@important-color, 80%);
+  // 错误颜色
+  --error-color: @red-5;
+  //平台背景色
+  --quick-platform-color: rgba(230, 140, 71, 0.1);
+  --quick-platform-active-color: #ff8010;
+  --tiktok-platform-color: rgba(71, 92, 230, 0.1);
+  --tiktok-platform-active-color: #1a1a1a;
+  --wechat-platform-color: rgba(0, 179, 84, 0.1);
+  --wechat-platform-active-color: #00b354;
+  --btn-default-border: @btn-default-border;
+}
