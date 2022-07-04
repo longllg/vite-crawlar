@@ -6,12 +6,19 @@ const { resolve } = require('path');
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), svgr()],
-  alias: [{ find: 'src', replacement: resolve(__dirname, 'src') }],
+  resolve: {
+    alias: [{ find: 'src', replacement: resolve(__dirname, 'src') }],
+  },
   css: {
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
       },
     },
+  },
+  server: {
+    port: 4343,
+    host: 'local.zmllgg.icu',
+    open: '/',
   },
 });

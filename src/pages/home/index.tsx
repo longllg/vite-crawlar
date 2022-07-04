@@ -12,17 +12,15 @@ interface ListProps {
 
 const { TextArea } = Input;
 const home = () => {
-  const [list, setList] = useState<Array<ListProps>>([
-    {
-      value: '',
-      keyParams: '',
-      key: new Date().valueOf().toString() + Math.random(),
-    },
-  ]);
+  const [list, setList] = useState<Array<ListProps>>([]);
   // url
   const [url, setUrl] = useState('');
 
-  const [batchFile, setBatchFile] = useState({} as any);
+  // dom element
+  const [domElement, setDomElement] = useState('.s-category .J_valueList a');
+
+  // loading状态
+  const [loading, setLoading] = useState(false);
 
   // result
   const [result, setResult] = useState<any>();
@@ -62,19 +60,23 @@ const home = () => {
     });
   };
 
-  // 选择url
+  // 赋值url
   const handleChangeUrl = (e: ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
   };
 
+  // 赋值domelement
+  const handleChangeDomElement = (e: ChangeEvent<HTMLInputElement>) => {
+    setDomElement(e.target.value);
+  };
+
   // 提交
   const sumbit = () => {
-    console.log(batchFile, 'batchFile');
-
-    fetch('http://localhost:9000/get', {
+    setLoading(true);
+    fetch('http://localhost:9022/get', {
       method: 'post',
       mode: 'cors',
-      body: JSON.stringify({ batchFile: batchFile, source: list, url }),
+      body: JSON.stringify({ source: list, url, domElement }),
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
       },
@@ -83,46 +85,11 @@ const home = () => {
         return res.json();
       })
       .then((v) => {
-        console.log(v.data.slice(1, 10).toString());
-        const fileReader = new FileReader();
-        const blob = new Blob(v.data);
-        fileReader.readAsArrayBuffer(blob);
-        fileReader.onload = () => {
-          if (fileReader.result) {
-            console.log(new Blob([fileReader.result]));
-          }
-        };
-        // const buf = new Buffer(v.data, 'base64');
-        // console.log(buf, 'buf');
-
-        // const value = new ArrayBuffer(v.data);
-        // console.log(value);
-
-        // const textReader = new FileReader();
-        // // textReader.readAsArrayBuffer(value);
-        // textReader.onload = (e) => {
-        //   console.log(textReader.result);
-        // };
-        // setResult(v);
+        setResult(v);
+        setLoading(false);
       });
   };
 
-  // 上传表格
-  const customRequest = useCallback(
-    async ({ file, onSuccess, onError, onProgress }: { [key: string]: any }) => {
-      const base64: any = await new Promise((resolve) => {
-        const fileReader = new FileReader();
-        fileReader.readAsArrayBuffer(file);
-        fileReader.onload = () => {
-          resolve(fileReader.result);
-        };
-      });
-
-      setBatchFile(new Blob([base64]));
-      onSuccess();
-    },
-    [setBatchFile]
-  );
   return (
     <div className={styles.wrap}>
       <Space align="center">
@@ -166,13 +133,19 @@ const home = () => {
         <span>输入网址url：</span>
         <Input value={url} onChange={handleChangeUrl} className={styles.input} />
       </div>
-      <Button onClick={sumbit}>submit</Button>
-      <Upload accept=".xlsx, .xls" maxCount={1} customRequest={customRequest}>
-        <span>
-          <CloudUploadOutlined className={styles.stepBtn} />
-          上传表格
-        </span>
-      </Upload>
+      <div className={styles.url}>
+        <span>获取的节点：</span>
+        <Input
+          value={domElement}
+          onChange={handleChangeDomElement}
+          className={styles.input}
+        />
+      </div>
+
+      <Button onClick={sumbit} loading={loading}>
+        {!loading ? 'submit' : '获取中···'}
+      </Button>
+
       {result && <TextArea value={result} autoSize />}
     </div>
   );
