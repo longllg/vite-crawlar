@@ -48,7 +48,7 @@
   "lint-staged": {
     "*.css": "stylelint",
     "*.less": "stylelint --syntax less",
-    "*.{jsx,js,ts,tsx,json,md,less}": [
+    "*.{jsx,js,ts,tsx,json,md,css,less}": [
       "prettier --write"
     ]
   }
