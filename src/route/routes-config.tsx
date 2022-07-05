@@ -8,7 +8,7 @@ import { ShowIcon } from './icon';
 const routesConfig: RoutesConfig[] = [
   {
     path: '/',
-    uuid: '56BF0C8FA4E44842BD2D7CC2213AFCD7',
+    uuid: '56BF0C8FA4E4482242BD2D7CC2213AFCD7',
     // component: loadable(() => import('src/pages/home')),
     routes: [
       {
