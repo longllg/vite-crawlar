@@ -73,7 +73,7 @@ const home = () => {
   // 提交
   const sumbit = () => {
     setLoading(true);
-    fetch('http://localhost:9022/get', {
+    fetch('http://node.zmllgg.icu/get', {
       method: 'post',
       mode: 'cors',
       body: JSON.stringify({ source: list, url, domElement }),
