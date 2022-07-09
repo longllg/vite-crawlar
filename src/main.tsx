@@ -9,7 +9,6 @@ import 'dayjs/locale/zh-cn';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-import videoSrc from 'src/assets/media/video.webm';
 
 dayjs.locale('zh-cn');
 
@@ -28,14 +27,6 @@ root.render(
       <SWRConfig value={swrConfig}>
         <BrowserRouter>
           <App />
-          <video
-            src={videoSrc}
-            autoPlay
-            loop
-            className="video"
-            width={'100%'}
-            height="100%"
-          ></video>
         </BrowserRouter>
       </SWRConfig>
     </ConfigProvider>
