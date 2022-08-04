@@ -22,15 +22,15 @@ const swrConfig: React.ComponentProps<typeof SWRConfig>['value'] = {
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 // 其他的一些配置可以根据实际情况加减 如 recoil jotai等
 root.render(
-  <React.StrictMode>
-    <ConfigProvider locale={zh_CN}>
-      <SWRConfig value={swrConfig}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </SWRConfig>
-    </ConfigProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <ConfigProvider locale={zh_CN}>
+    <SWRConfig value={swrConfig}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SWRConfig>
+  </ConfigProvider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -73,7 +73,12 @@ const home = () => {
   // 提交
   const sumbit = () => {
     setLoading(true);
-    fetch('http://node.zmllgg.icu/get', {
+    // fetch(
+    //   'https://search.jd.com/Search?keyword=%E9%AD%94%E5%A5%B3%E5%B7%A5%E5%8E%82&enc=utf-8'
+    // ).then((res) => {
+    //   console.log(res);
+    // });
+    fetch('http://localhost:9022/get', {
       method: 'post',
       mode: 'cors',
       body: JSON.stringify({ source: list, url, domElement }),
